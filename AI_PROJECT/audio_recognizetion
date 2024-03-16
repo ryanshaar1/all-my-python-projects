@@ -1,0 +1,20 @@
+import speech_recognition as sr
+
+class Speech_to_text:
+
+
+    audio_file = "C:\\Users\\Ryan\\OneDrive\\מסמכים\\HTML\\pythonLearning\\python\\audio testing\\One Direction - Story of My Life (320 kbps).wav"
+    recognizer = sr.Recognizer()
+
+    # Adjust for your audio input source
+    with sr.AudioFile(audio_file) as source:
+        audio_data = recognizer.record(source)
+
+    # Recognize speech using Sphinx
+    try:
+        text = recognizer.recognize_sphinx(audio_data)
+        print("Sphinx recognized:", text)
+    except sr.UnknownValueError:
+        print("Sphinx could not understand audio")
+    except sr.RequestError as e:
+        print("Sphinx error: {0}".format(e))
